@@ -1,35 +1,31 @@
 # Hi there, I'm daigato 👋
 
-クラウドインフラエンジニア / SRE を目指し、IaC（Infrastructure as Code）やコンテナ基盤、エッジコンピューティングの個人検証および本番運用を行っています。
+情報系専攻。クラウド基盤、IaC、自動化まわりの技術を中心に触っています。
 
 ---
 
-## 🛠 Featured Projects（制作実績）
+## Projects
 
-### 1. LINE連携スマート勤怠管理システム（本番運用中）
-実家の小規模事業所における労務・勤怠管理課題を解決するためにゼロから設計・実装したエッジ完結型クラウドシステムです。
-* **技術スタック**: Cloudflare Workers, Cloudflare D1, Hono, React, Vite, LINE LIFF / Messaging API
-* **アーキテクチャ・運用の工夫**:
-  * **FinOps（超低コスト運用）**: エッジサーバーレス構成により、実質無料枠（月数十円以下）で本番運用を維持。
-  * **SPOF排除**: 外部祝日APIの停止で打刻業務が止まるリスクを排除するため、天文計算を含む祝日判定ロジックを完全内製化。
-  * **セキュリティ**: HMAC-SHA256署名検証およびLIFF自動認証によるパスワードレス設計。
-* 🔗 [Repository](https://github.com/daigato/kintai) <!-- 公開用クローンリポジトリのURLに合わせて調整してください -->
+### [kintai](https://github.com/daigato/kintai)
+実家の業務向けに作成した、LINE連携の勤怠管理Webアプリ（本番稼働中）。
+- **構成**: Cloudflare Workers, Cloudflare D1, Hono, React, LINE LIFF
+- **概要**:
+  - Workers + D1 のエッジサーバーレス構成により、ほぼゼロコストで運用
+  - 外部祝日APIの障害による打刻停止を避けるため、祝日判定ロジックを自作
+  - LINE認証と署名検証によるパスワードレス設計
 
----
-
-### 2. AWS × Terraform クラウドインフラ自動構築基盤（構築・検証中）
-Python製Webアプリケーション（LINE Bot）の実行基盤を、コード（IaC）によって100%再現可能にしたクラウドインフラです。
-* **技術スタック**: AWS (App Runner / ECS, VPC, SSM), Terraform, Docker, GitHub Actions, Python
-* **アーキテクチャ・運用の工夫**:
-  * **環境の完全コード化（IaC）**: ネットワーク構築からコンテナ実行環境、シークレット管理までをTerraformで宣言的に管理。
-  * **セキュアなコンテナ設計**: 非rootユーザー実行、マルチステージビルドによるイメージサイズの最小化。
-  * **CI/CD自動化**: GitHub Actionsによるコンテナビルド・ECRプッシュ・デプロイパイプラインの統合。
-* 🔗 [Repository](https://github.com/daigato/weather-bot) <!-- リポジトリ名に合わせて調整してください -->
+### [weather-bot-infra](https://github.com/daigato/weather-bot)
+LINE Botを題材にした、コンテナ化およびAWSインフラのコード化（IaC）検証。
+- **構成**: AWS, Terraform, Docker, Python, GitHub Actions
+- **概要**:
+  - Web API環境をDockerでコンテナ化
+  - ネットワークや実行環境をTerraformでコード管理し、構築・破棄の再現性を確保
+  - GitHub Actionsによるビルドとデプロイの自動化
 
 ---
 
-## 💻 Tech Stack
-* **Cloud / Edge**: AWS, Cloudflare
-* **IaC / Container**: Terraform, Docker
-* **Languages**: Python, C, TypeScript
-* **CI / CD**: GitHub Actions
+## Tech Stack
+- **Cloud / Edge**: AWS, Cloudflare
+- **IaC / Container**: Terraform, Docker
+- **Languages**: Python, C
+- **CI / CD**: GitHub Actions
